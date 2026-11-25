@@ -1,0 +1,150 @@
+# SOCCER ANALYTICS — COMPUTER VISION
+## Local Project Operating Guide
+
+### 1. Project Location
+
+`D:\Projects\SOCCER ANALTICAL SYSTEM`
+
+This project contains two independent implementations:
+
+- V1 — Original Soccer Analytics application.
+- V2 — Extended football analytics pipeline and dashboard.
+
+Each version has its own Python virtual environment.
+
+### 2. V1 — Original Application
+
+**Environment:** `.venv`
+
+**Launch dashboard:**
+
+```powershell
+.\.venv\Scripts\python.exe -m streamlit run app.py
+```
+
+**Run CLI help:**
+
+```powershell
+.\.venv\Scripts\python.exe run.py --help
+```
+
+**CLI options:**
+- `--video`: Input video.
+- `--model`: Model path.
+- `--passes`: Enable pass detection.
+- `--possession`: Enable possession counter.
+
+The V1 dashboard supports video upload, model selection, team configuration, processing and downloadable annotated video.
+
+### 3. V2 — Extended Analytics Application
+
+**Environment:** `.venv-v2`
+
+**Launch dashboard:**
+
+```powershell
+.\.venv-v2\Scripts\python.exe -m streamlit run streamlit_app.py
+```
+
+**Run CLI help:**
+
+```powershell
+.\.venv-v2\Scripts\python.exe analyze.py --help
+```
+
+**Example CLI analysis:**
+
+```powershell
+.\.venv-v2\Scripts\python.exe analyze.py --video videos/0bfacc_0.mp4
+```
+
+V2 supports:
+- Player detection.
+- Ball detection.
+- Player tracking.
+- Team classification.
+- Possession analysis.
+- Pass and turnover detection.
+- Annotated video generation.
+- CSV and JSON analytics exports.
+- Configurable processing presets and inference settings.
+
+### 4. Models
+
+The `models/` directory contains:
+
+- `football-player-detection.pt`
+- `football-ball-detection.pt`
+- `football-pitch-detection.pt`
+
+The project root also contains `yolov5s.pt`.
+
+### 5. Sample Videos
+
+The `videos/` directory contains:
+
+- `08fd33_0.mp4`
+- `0bfacc_0.mp4`
+- `121364_0.mp4`
+- `2e57b9_0.mp4`
+- `573e61_0.mp4`
+
+### 6. Generated Results
+
+V2 generates analysis results inside:
+
+`outputs/`
+
+Typical output files include:
+
+- `annotated.mp4`
+- `events.csv`
+- `possession_timeline.csv`
+- `summary.json`
+
+V1 provides a downloadable processed video through its dashboard.
+
+### 7. Testing
+
+Run V2 unit tests:
+
+```powershell
+.\.venv-v2\Scripts\python.exe -m pytest tests/ -v
+```
+
+Compile project Python files:
+
+```powershell
+.\.venv-v2\Scripts\python.exe -m compileall -q .
+```
+
+### 8. Hardware Acceleration
+
+Verified hardware:
+
+- GPU: NVIDIA GeForce RTX 4070 Laptop GPU.
+- CUDA: Available.
+- PyTorch: CUDA-enabled installation.
+
+Both environments independently detected CUDA successfully.
+
+### 9. Environment Separation
+
+Never combine `.venv` and `.venv-v2`.
+
+V1 and V2 intentionally use different NumPy and OpenCV versions. Install dependencies into the appropriate environment.
+
+### 10. Verification Record
+
+- Original tracked files: 46.
+- Exact SHA256 matches: 46.
+- Missing original files: 0.
+- Mismatched original files: 0.
+- Project-wide Python compilation: 37 files passed.
+- V2 unit tests: 10 passed.
+- V1 and V2 CLI checks: Passed.
+- V1 and V2 dashboard workflows: Tested.
+- V1 and V2 video processing: Tested.
+- RTX 4070 inference: Verified.
+
+This guide documents the local operating procedure and verification history. It does not replace or modify the original GitHub README.
